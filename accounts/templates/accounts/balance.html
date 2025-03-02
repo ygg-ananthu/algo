@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .balance-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        .balance-amount {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-balance-btn {
+            background-color: #3498db;
+        }
+        .add-balance-btn:hover {
+            background-color: #2980b9;
+        }
+        .logout-btn {
+            background-color: #e74c3c;
+        }
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="balance-container">
+        <h2>Your Balance</h2>
+        {% for message in messages %}
+            <p style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+                {{ message }}
+            </p>
+        {% endfor %}
+        <p class="balance-amount">${{ balance }}</p>
+        
+        <!-- Add Balance Button -->
+        <a href="{% url 'add_balance_page' %}" class="btn add-balance-btn">Add Balance</a>
+        
+        <!-- Logout Button -->
+        <a href="{% url 'logout' %}" class="btn logout-btn">Logout</a>
+    </div>
+</body>
+</html>

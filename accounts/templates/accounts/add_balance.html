@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Balance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .balance-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        .input-field {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn {
+            background-color: #2ecc71;
+        }
+        .submit-btn:hover {
+            background-color: #27ae60;
+        }
+        .cancel-btn {
+            background-color: #e74c3c;
+        }
+        .cancel-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="balance-container">
+        <h2>Add Balance</h2>
+        {% for message in messages %}
+            <p style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+                {{ message }}
+            </p>
+        {% endfor %}
+        <form action="{% url 'add_balance' %}" method="POST">
+            {% csrf_token %}
+            <input type="number" name="balance" class="input-field" placeholder="Enter amount" required>
+            <br>
+            <button type="submit" class="btn submit-btn">Add</button>
+        </form>
+        <br>
+        <a href="{% url 'balance_page' %}" class="btn cancel-btn">Cancel</a>
+    </div>
+</body>
+</html>

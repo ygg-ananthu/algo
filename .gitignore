@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.venv/
+Pipfile
+Pipfile.lock
+
+# Django-specific files
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+static/
+*.log
+*.pot
+
+# Environment variables
+.env
+.env.local
+.env.*.json
+config/settings/local.py
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Migrations (optional, keep if you want to track them manually)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/__pycache__/
+
+# VS Code / PyCharm / JetBrains
+.vscode/
+.idea/
+*.iml
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
