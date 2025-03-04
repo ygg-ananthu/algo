@@ -161,7 +161,7 @@ class OptionTradingBot:
 
     def place_order(self, entry, instrument_key, type):
         order_payload = {
-            "quantity": 1,
+            "quantity": 75,
             "product": "D",
             "validity": "DAY",
             "price": entry,

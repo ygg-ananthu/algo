@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .forms import SignupForm
 from django.contrib.auth.decorators import login_required
-from accounts.models import User
-import requests
+
+
 from django.core.cache import cache
 from django.contrib import messages
 
@@ -18,7 +18,7 @@ def signup_view(request):
             
             url = "https://api.upstox.com/v2/login/authorization/dialog"
             params = {
-                "client_id": "5c347c6d-a95d-4ad6-934b-0ff3f8f23f29",
+                "client_id": user.client_id,
                 "redirect_uri": "http://127.0.0.1:8000/accounts/balance/",
                 "response_type": "code"
             }
@@ -38,7 +38,7 @@ def login_view(request):
             login(request, user)
             url = "https://api.upstox.com/v2/login/authorization/dialog"
             params = {
-                "client_id": "5c347c6d-a95d-4ad6-934b-0ff3f8f23f29",
+                "client_id": user.client_id,
                 "redirect_uri": "http://127.0.0.1:8000/accounts/balance/",
                 "response_type": "code"
             }
